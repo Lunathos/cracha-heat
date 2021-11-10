@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+}
+
+html,
+body {
+  /*Variável
+  Que pode ser utilizada no documento inteiro
+  e modifica em todos lugares
+
+  H = Hill (Vermelho à Vermelho - Cor)
+  S = Saturation 
+  L = Lightness
+  */
+  --black: hsl(240, 6%, 13%);
+  --gray: hsl(240, 9%, 89%);
+
+  height: 100%;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+main {
+  background: url(images/background.svg);
+  width: 375px;
+  height: 812px;
+}
+
+.container {
+  max-width: 250px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  color: var(--gray);
+}
+
+.avatar {
+  /* REM = Relação com o Pixel da Página
+    1 REM = 16px da página
+
+    Espaço / Pixel (16)
+
+    */
+  width: 10rem;
+  margin: 11.5rem auto 0;
+
+  /*Determina o posicionamento de elementos filhos*/
+  position: relative;
+}
+
+.avatar span {
+  /*Cria-se níveis de empilhamento
+    absolute é da página inteira
+    */
+  position: absolute;
+  top: -15px;
+  z-index: 1;
+  /*Eixo x - horizontal
+    Eixo y - vertical
+    Eixo z - espacial (profundidade)
+  
+  */
+}
+
+/* > - Significa que ele irá pegar a imagem do 1º Nível
+Os níveis vão variando, quanto mais "próximo" da TAG PRINCIPAL menor o nível.
+
+<tag>
+    <tag>
+    Nível 2
+       <tag>
+        Nível 3
+       </tag>
+    </tag>
+
+    <tag>Nível 1</tag>
+*/
+
+.avatar > img {
+  width: 10rem;
+  height: 11.5rem;
+  /*Irá utilizar todo espaço*/
+  object-fit: cover;
+  /*Clip css*/
+
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+
+h1 {
+  font-size: 1.5rem;
+
+  margin-top: 1.5rem;
+}
+
+a {
+  color: var(--grey);
+  text-decoration: none;
+
+  margin-top: 0.25rem;
+
+  display: flex;
+  gap: 0.75rem;
+
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  margin-top: 2rem;
+}
+
+ul {
+  margin-top: 4rem;
+
+  list-style: none;
+  padding: 0;
+
+  /*Flex trabalha com uma Box ao lado da outro
+  
+  */
+  display: flex;
+  gap: 0.5rem; /*Espaçamento*/
+  justify-content: center;
+}
+
+/*
+
+Força de Especificidade
+
+1 - <> Inline CSS
+2 - # ID Selector
+3 - . Class, Pseudo-Class, Attribute
+4- -- Element Selector
+
+Unidades de Medida e Responsivo
+
+Responsividade é um layout funcionar
+Em uma tela pequena ou grande
+Adaptando seus elementos com o tamanho.
+
+- Unidades de Medidas Relatives
+> Há adaptação
+
+- Unidades Relativas Estáticas
+> Pixel
+> Não há adaptação
+
+
+- Analisando o Layout
+
+Identificar elementos:
+Cor de Fundo ou Fundo;
+Fotografia; Fontes;
+Organização dos Elementos;
+
+Como esta organizado no HTML?
+
+Conteudo dentro de limites?
+É um link? H1? Está dentro do body?
+
+- Criando um container
+Para conter o código
+
+- Identificando Containers dentro de containers
+
+# Box Model
+
+Modelo de Caixa
+
+
+{MARGIN - "Espaços do mundo externo"
+[BORDER - Borda
+(PADDING - Preenchimento
+|Caixa|
+)
+]
+}
+
+# Layout
+
+Com Grid você trabalha com o posicionamento das caixas
+dentro das resoluções (desktop, tablets, smartphoness...)
+
+
+
+*/
